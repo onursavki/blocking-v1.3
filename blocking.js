@@ -10,13 +10,21 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
 
-// RESİM SÜÜRKLE BIRAK ENGELLE
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('img');
-
-    images.forEach(img => {
-        img.addEventListener('dragstart', function(event) {
-            event.preventDefault(); // Sürükleme olayının varsayılan davranışını engeller
-        });
-    });
+// RESİM SÜRÜKLE BIRAKMA ENGELLE
+document.addEventListener('dragover', function(e) {
+    e.preventDefault();
 });
+
+document.addEventListener('drop', function(e) {
+    e.preventDefault();
+});
+
+// SOL TIK İLE YAZI SEÇMEYİ ENGELLE
+document.addEventListener('mousedown', function(e) {
+    if (e.button === 0) { // Sol tıklama
+        e.preventDefault();
+    }
+});
+
+// YAZI SEÇMEYİ ENGELLE
+document.body.style.userSelect = 'none';
